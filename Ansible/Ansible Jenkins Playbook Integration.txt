@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        label 'nodexxx'
+     }
+    stages {
+       stage('git checkout') {
+            'git branch: 'Master', credentialId: xxxx, gitUrl: xxxxx'
+        }
+    }
+    stages {
+       stage('Run Ansible playbook') {
+            'ansiblePlaybook credentialId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2',
+             inventory: 'hosts', playbook: 'tomcat.yml'    
+        }
+    }
